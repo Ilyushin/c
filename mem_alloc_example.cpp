@@ -3,7 +3,7 @@
 #include <string.h>
 
 
-int main(){
+void mem_alloc_exam_run(){
 
     char *name;
 
@@ -23,8 +23,6 @@ int main(){
 
     /* release memory using free() function */
     free(name);
-
-    return 0;
 
 }
 

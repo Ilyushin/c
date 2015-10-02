@@ -16,22 +16,19 @@ void *func2(void *args)
     return NULL;
 }
 
-void create_thread_exam_run();
-
-void create_thread_exam_run(){
+int main(){
 
     pthread_t thread1,thread2;
-    char* err;
 
     if (pthread_create(&thread1, NULL, func1, NULL) != 0)
     {
-        err = "Can't create first thread";
+        return EXIT_FAILURE;
     }
 
     if (pthread_create(&thread2, NULL, func2, NULL) != 0)
     {
-        err = "Can't create second thread";
+        return EXIT_FAILURE;
     }
     pthread_exit(NULL);
-    printf("%c", err);
 }
+
