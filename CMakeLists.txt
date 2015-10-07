@@ -11,8 +11,11 @@ set(SOURCE_FILES main.cpp
         string_example.cpp
         struct_example.cpp
         pthreads_examples/create_threads.cpp
+        pthreads_examples/assign_processor_for_thread.cpp
         pthreads_examples/join_threads.cpp)
 
-set(HEADERS string_example.h)
+set(HEADERS string_example.h
+        struct_example.h)
+
 #set(SOURCES )
 add_executable(c ${SOURCE_FILES})
