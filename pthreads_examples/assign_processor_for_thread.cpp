@@ -6,22 +6,29 @@
 #include <unistd.h>
 #include "assign_processor_for_thread.h"
 
+
+
 void *funct1(void *args)
 {
+#ifdef __linux__
     printf("Thread 1\n");
     printf("ID: %lu, CPU: %d\n", pthread_self(), sched_getcpu());
     return NULL;
+#endif
 }
 
 void *funct2(void *args)
 {
+#ifdef __linux__
     printf("Thread 2\n");
     printf("ID: %lu, CPU: %d\n", pthread_self(), sched_getcpu());
     return NULL;
+#endif
 }
 
 void assign_processor_for_thread_exam_run(){
 
+#ifdef __linux__
     int numberOfProcessors = sysconf(_SC_NPROCESSORS_ONLN);
     printf("Number of processors: %d\n", numberOfProcessors);
 
@@ -50,4 +57,5 @@ void assign_processor_for_thread_exam_run(){
     }
     pthread_exit(NULL);
     printf("%c\n", err);
+#endif
 }
