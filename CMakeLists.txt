@@ -12,7 +12,9 @@ set(SOURCE_FILES main.cpp
         struct_example.cpp
         pthreads_examples/create_threads.cpp
         pthreads_examples/assign_processor_for_thread.cpp
-        pthreads_examples/join_threads.cpp)
+        pthreads_examples/join_threads.cpp
+        submission_data/list.cpp
+        submission_data/list.h work_with_files_examples/read_data_from_file.cpp work_with_files_examples/read_data_from_file.h submission_data/test_list.cpp submission_data/test_list.h)
 
 set(HEADERS string_example.h
         struct_example.h)
