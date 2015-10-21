@@ -1,16 +1,11 @@
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "test_list.h"
 #include "list.h"
 
-void print_head_list(list_t *list);
+void print_list(list_t *list);
 
-typedef struct book_t {
-    int id;
-    char autor[100];
-    char title[100];
-    double prise;
-}book_t;
 
 int test_list_run() {
 
@@ -31,16 +26,23 @@ int test_list_run() {
     strcpy(book3.title, "Book 3");
     book3.prise = 525.23;
 
-    list_t *list_books = new_list(&book1);
+    list_t* list_books = new_list(&book1);
 
-    int result = add_to_list(list_books, &book2);
-    result = add_to_list(list_books, &book3);
+    add_to_list(&list_books, &book2);
+   add_to_list(&list_books, &book3);
 
-    print_head_list(list_books);
+    print_list(list_books);
 
+    destroy_list(list_books);
 }
 
-void print_head_list(list_t *list){
-    book_t *head = (book_t*)list->value;
-    printf("Title head of list of books - %s\n",head->title);
+void print_list(list_t *list){
+
+    list_t* head = list;
+
+    while (head) {
+        book_t *value = (book_t *) head->value;
+        printf("Title head of list of books - %s\n", value->title);
+        head = head->next;
+    }
 }
