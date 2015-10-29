@@ -2,33 +2,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//void *func1(void *args)
-//{
-//    printf("Thread 1\n");
-//
-//    return NULL;
-//}
-//
-//void *func2(void *args)
-//{
-//    printf("Thread 2");
-//
-//    return NULL;
-//}
-//
-//int main(){
-//
-//    pthread_t thread1,thread2;
-//
-//    if (pthread_create(&thread1, NULL, func1, NULL) != 0)
-//    {
-//        return EXIT_FAILURE;
-//    }
-//
-//    if (pthread_create(&thread2, NULL, func2, NULL) != 0)
-//    {
-//        return EXIT_FAILURE;
-//    }
-//    pthread_exit(NULL);
-//}
+//TODO Add some calculations for examples
+void *func(void *args)
+{
+    int* x = (int*)args;
+    printf("Thread %d\n", *x);
+
+    return NULL;
+}
+
+/*join_threads_exam_run()
+ * num_threads - number of threads, which need to create
+ * */
+void join_threads_exam_run(int num_threads){
+
+    int result = 0, i;
+
+    /* allocation memory for a array of threads */
+    pthread_t* threads;
+    threads = (pthread_t*)malloc(num_threads * sizeof(pthread_t));
+
+    /* fill an array of threads */
+    for (i = 0; i<num_threads; i++)
+    {
+        result = pthread_create(threads+i, NULL, func, &i);
+        if(result != 0) {
+            fprintf(stderr, "pthread_create: error code %d\n", result);
+            exit(-1);
+        }
+    }
+
+    for (i = 0; i < num_threads; i++) {
+        result = pthread_join(threads[i], NULL);
+        if(result != 0) {
+            fprintf(stderr, "pthread_join: error code %d\n", result);
+            exit(-1);
+        }
+    }
+
+}
 
