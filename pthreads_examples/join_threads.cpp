@@ -2,11 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//TODO Add some calculations for examples
 void *func(void *args)
 {
     int* x = (int*)args;
-    printf("Thread %d\n", *x);
+    printf("Thread %d\n", x);
 
     return NULL;
 }
@@ -16,16 +15,18 @@ void *func(void *args)
  * */
 void join_threads_exam_run(int num_threads){
 
-    int result = 0, i;
+    int result = 0, i, par1 = 3, par2 = 5;
 
     /* allocation memory for a array of threads */
-    pthread_t* threads;
-    threads = (pthread_t*)malloc(num_threads * sizeof(pthread_t));
+    pthread_t* threads = (pthread_t*)malloc(num_threads * sizeof(pthread_t));;
+
+    /* create array of parametrs for threads */
+    int* arr_par = (int*)malloc(num_threads * sizeof(int));
 
     /* fill an array of threads */
     for (i = 0; i<num_threads; i++)
     {
-        result = pthread_create(threads+i, NULL, func, &i);
+        result = pthread_create(threads+i, NULL, func, arr_par+i);
         if(result != 0) {
             fprintf(stderr, "pthread_create: error code %d\n", result);
             exit(-1);
