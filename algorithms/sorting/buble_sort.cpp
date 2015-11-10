@@ -4,7 +4,7 @@
  * items - elements of array
  * n - size of array
  * */
-void buble_sorting(int* items, int n){
+void buble_sort(int* items, int n){
     for (int i = 1; i < n; i++) {
         for (int i = 1; i < n; i++) {
             if (items[i - 1] > items[i]) {

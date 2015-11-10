@@ -1,0 +1,4 @@
+#ifndef C_INSERTION_SORT_H
+#define C_INSERTION_SORT_H
+
+#endif //C_INSERTION_SORT_H
