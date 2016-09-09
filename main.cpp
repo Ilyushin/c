@@ -1,16 +1,16 @@
-#include <stdio.h>
+/*#include <stdio.h>
 #include <stdlib.h>
 #include <create_threads.h>
 #include <assign_processor_for_thread.h>
 #include <join_threads.h>
 #include "work_with_files_examples/read_data_from_file.h"
-
+*/
 
 int main(int argc, char *argv[])
 {
     //create_thread_exam_run();
     //assign_processor_for_thread_exam_run();
-    join_threads_exam_run(4);
+    //join_threads_exam_run(4);
     //string_exam_run();
     //struct_exam_run();
     //test_list_run();
@@ -27,5 +27,9 @@ int main(int argc, char *argv[])
         char** data_file_to_array(path);
     }*/
 
-    return 0;
+    int a[2][2]= {{0, 1}, {2, 3}}; // #1
+
+    int (*pa)[2] = &a[1];          // #2
+
+    return 3;
 }
