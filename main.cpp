@@ -1,10 +1,13 @@
-/*#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <create_threads.h>
 #include <assign_processor_for_thread.h>
 #include <join_threads.h>
 #include "work_with_files_examples/read_data_from_file.h"
-*/
+#include "algorithms/sorting/buble_sort.h"
+#include "algorithms/sorting/insertion_sort.h"
+#include "algorithms/sorting/selection_sorting.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -27,9 +30,18 @@ int main(int argc, char *argv[])
         char** data_file_to_array(path);
     }*/
 
-    int a[2][2]= {{0, 1}, {2, 3}}; // #1
+    /*test buble sorting*/
+    int set_number[7] = {7,6,5,4,3,2,1};
+    for (int i=0;i<7;i++)
+        printf("%d", set_number[i]);
 
-    int (*pa)[2] = &a[1];          // #2
+    //buble_sort(&set_number[0], 7);
+    //insertion_sort(&set_number[0], 7);
+    selection_sorting(&set_number[0], 7);
 
-    return 3;
+    printf("\n--------------------------\n");
+    for (int i=0;i<7;i++)
+        printf("%d", set_number[i]);
+
+    return 0;
 }
